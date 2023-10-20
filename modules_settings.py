@@ -123,12 +123,68 @@ async def mint_zerius(account_id, key):
     await zerius.bridge(chains, sleep_from, sleep_to)
 
 
+async def mint_nft(account_id, key):
+    """
+    Mint NFT on NFTS2ME
+    ______________________________________________________
+    contracts - list NFT contract addresses
+    """
+
+    contracts = [""]
+
+    minter = Minter(account_id, key)
+    await minter.mint_nft(contracts)
+
+
+async def custom_routes(account_id, key):
+    """
+    BRIDGE:
+        – deposit_scroll
+        – withdraw_scroll
+        – bridge_orbiter
+    WRAP:
+        – wrap_eth
+        – unwrap_eth
+    DEX:
+    LIQUIDITY:
+    LANDING:
+    NFT/DOMAIN:
+        – mint_zerius
+        – create_omnisea
+        – mint_nft
+    ANOTHER:
+        – send_mail (Dmail)
+    ______________________________________________________
+    Disclaimer - You can add modules to [] to select random ones,
+    example [module_1, module_2, [module_3, module_4], module 5]
+    The script will start with module 1, 2, 5 and select a random one from module 3 and 4
+    """
+
+    use_modules = [
+        create_omnisea,
+        [create_omnisea, mint_zerius],
+    ]
+
+    sleep_from = 300
+    sleep_to = 700
+
+    random_module = True
+
+    routes = Routes(account_id, key)
+    await routes.start(use_modules, sleep_from, sleep_to, random_module)
+
+
 #########################################
 ########### NO NEED TO CHANGE ###########
 #########################################
 async def send_mail(account_id, key):
     dmail = Dmail(account_id, key)
     await dmail.send_mail()
+
+
+async def create_omnisea(account_id, key):
+    omnisea = Omnisea(account_id, key)
+    await omnisea.create()
 
 
 def get_tx_count():

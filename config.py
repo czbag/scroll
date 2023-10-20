@@ -27,6 +27,12 @@ with open("data/abi/zerius/abi.json", "r") as file:
 with open("data/abi/dmail/abi.json", "r") as file:
     DMAIL_ABI = json.load(file)
 
+with open("data/abi/omnisea/abi.json", "r") as file:
+    OMNISEA_ABI = json.load(file)
+
+with open("data/abi/nft2me/abi.json", "r") as file:
+    NFTS2ME_ABI = json.load(file)
+
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
 BRIDGE_CONTRACTS = {
@@ -45,3 +51,5 @@ SCROLL_TOKENS = {
 ZERIUS_CONTRACT = "0xeb22c3e221080ead305cae5f37f0753970d973cd"
 
 DMAIL_CONTRACT = "0x47fbe95e981c0df9737b6971b451fb15fdc989d9"
+
+OMNISEA_CONTRACT = "0x46ce46951d12710d85bc4fe10bb29c6ea5012077"
