@@ -21,6 +21,18 @@ with open('data/abi/bridge/oracle.json') as file:
 with open('data/abi/scroll/weth.json') as file:
     WETH_ABI = json.load(file)
 
+with open("data/abi/syncswap/router.json", "r") as file:
+    SYNCSWAP_ROUTER_ABI = json.load(file)
+
+with open('data/abi/syncswap/classic_pool.json') as file:
+    SYNCSWAP_CLASSIC_POOL_ABI = json.load(file)
+
+with open('data/abi/syncswap/classic_pool_data.json') as file:
+    SYNCSWAP_CLASSIC_POOL_DATA_ABI = json.load(file)
+
+with open("data/abi/skydrome/abi.json", "r") as file:
+    SKYDROME_ROUTER_ABI = json.load(file)
+
 with open("data/abi/zerius/abi.json", "r") as file:
     ZERIUS_ABI = json.load(file)
 
@@ -46,6 +58,16 @@ ORBITER_CONTRACT = "0x80c67432656d59144ceff962e8faf8926599bcf8"
 SCROLL_TOKENS = {
     "ETH": "0x5300000000000000000000000000000000000004",
     "WETH": "0x5300000000000000000000000000000000000004",
+    "USDC": "0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4"
+}
+
+SYNCSWAP_CONTRACTS = {
+    "router": "0x80e38291e06339d10aab483c65695d004dbd5c69",
+    "classic_pool": "0x37BAc764494c8db4e54BDE72f6965beA9fa0AC2d"
+}
+
+SKYDROME_CONTRACTS = {
+    "router": "0xAA111C62cDEEf205f70E6722D1E22274274ec12F"
 }
 
 ZERIUS_CONTRACT = "0xeb22c3e221080ead305cae5f37f0753970d973cd"

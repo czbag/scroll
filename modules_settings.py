@@ -106,6 +106,68 @@ async def unwrap_eth(account_id, key):
     await scroll.unwrap_eth(min_amount, max_amount, decimal, all_amount, min_percent, max_percent)
 
 
+async def swap_skydrome(account_id, key):
+    """
+    Make swap on Skydrome
+    ______________________________________________________
+    from_token – Choose SOURCE token ETH, USDC | Select one
+    to_token – Choose DESTINATION token ETH, USDC | Select one
+
+    Disclaimer - You can swap only ETH to any token or any token to ETH!
+    ______________________________________________________
+    all_amount - swap from min_percent to max_percent
+    """
+
+    from_token = "USDC"
+    to_token = "ETH"
+
+    min_amount = 0.0001
+    max_amount = 0.0002
+    decimal = 6
+    slippage = 1
+
+    all_amount = True
+
+    min_percent = 100
+    max_percent = 100
+
+    skydrome = Skydrome(account_id, key)
+    await skydrome.swap(
+        from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
+    )
+
+
+async def swap_syncswap(account_id, key):
+    """
+    Make swap on SyncSwap
+
+    from_token – Choose SOURCE token ETH, USDC | Select one
+    to_token – Choose DESTINATION token ETH, USDC | Select one
+
+    Disclaimer – Don't use stable coin in from and to token | from_token USDC to_token USDT DON'T WORK!!!
+    ______________________________________________________
+    all_amount - swap from min_percent to max_percent
+    """
+
+    from_token = "USDC"
+    to_token = "ETH"
+
+    min_amount = 1
+    max_amount = 2
+    decimal = 6
+    slippage = 1
+
+    all_amount = True
+
+    min_percent = 100
+    max_percent = 100
+
+    syncswap = SyncSwap(account_id, key)
+    await syncswap.swap(
+        from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
+    )
+
+
 async def mint_zerius(account_id, key):
     """
     Mint + bridge Zerius NFT
@@ -146,6 +208,8 @@ async def custom_routes(account_id, key):
         – wrap_eth
         – unwrap_eth
     DEX:
+        – swap_skydrome
+        – swap_syncswap
     LIQUIDITY:
     LANDING:
     NFT/DOMAIN:
