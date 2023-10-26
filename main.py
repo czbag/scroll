@@ -27,9 +27,10 @@ def get_module():
             Choice("9) Create NFT collection on Omnisea", create_omnisea),
             Choice("10) Mint NFT on NFTS2ME", mint_nft),
             Choice("11) Dmail send email", send_mail),
-            Choice("12) Use custom routes", custom_routes),
-            Choice("13) Check transaction count", "tx_checker"),
-            Choice("14) Exit", "exit"),
+            Choice("12) Deploy contract", deploy_contract),
+            Choice("13) Use custom routes", custom_routes),
+            Choice("14) Check transaction count", "tx_checker"),
+            Choice("15) Exit", "exit"),
         ],
         qmark="⚙️ ",
         pointer="✅ "

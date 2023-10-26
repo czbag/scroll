@@ -251,5 +251,10 @@ async def create_omnisea(account_id, key):
     await omnisea.create()
 
 
+async def deploy_contract(account_id, key):
+    deployer = Deployer(account_id, key)
+    await deployer.deploy_token()
+
+
 def get_tx_count():
     asyncio.run(check_tx())

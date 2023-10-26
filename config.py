@@ -45,6 +45,12 @@ with open("data/abi/omnisea/abi.json", "r") as file:
 with open("data/abi/nft2me/abi.json", "r") as file:
     NFTS2ME_ABI = json.load(file)
 
+with open("data/deploy/abi.json", "r") as file:
+    DEPLOYER_ABI = json.load(file)
+
+with open("data/deploy/bytecode.txt", "r") as file:
+    DEPLOYER_BYTECODE = file.read()
+
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
 BRIDGE_CONTRACTS = {
