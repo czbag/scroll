@@ -23,8 +23,7 @@ class Skydrome(Account):
         return int(min_amount_out - (min_amount_out / 100 * slippage)), swap_type
 
     async def swap_to_token(self, from_token: str, to_token: str, amount: int, slippage: int):
-        tx_data = await self.get_tx_data()
-        tx_data.update({"value": amount, "gasPrice": await self.w3.eth.gas_price})
+        tx_data = await self.get_tx_data(amount)
 
         deadline = int(time.time()) + 1000000
 
@@ -56,9 +55,6 @@ class Skydrome(Account):
         await self.approve(amount, token_address, SKYDROME_CONTRACTS["router"])
 
         tx_data = await self.get_tx_data()
-        tx_data.update(
-            {"gasPrice": await self.w3.eth.gas_price, "nonce": await self.w3.eth.get_transaction_count(self.address)}
-        )
 
         deadline = int(time.time()) + 1000000
 

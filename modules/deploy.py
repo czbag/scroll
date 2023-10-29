@@ -15,7 +15,6 @@ class Deployer(Account):
         logger.info(f"[{self.account_id}][{self.address}] Deploy contract")
 
         tx_data = await self.get_tx_data()
-        tx_data.update({"gasPrice": await self.w3.eth.gas_price})
 
         contract = self.w3.eth.contract(
             abi=DEPLOYER_ABI,

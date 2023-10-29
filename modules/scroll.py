@@ -46,8 +46,7 @@ class Scroll(Account):
 
         fee = await contract_oracle.functions.estimateCrossDomainMessageFee(168000).call()
 
-        tx_data = await self.get_tx_data()
-        tx_data.update({"value": amount_wei + fee})
+        tx_data = await self.get_tx_data(amount_wei + fee, False)
 
         transaction = await contract.functions.depositETH(
             amount_wei,
@@ -85,8 +84,7 @@ class Scroll(Account):
 
         contract = self.get_contract(BRIDGE_CONTRACTS["withdraw"], WITHDRAW_ABI)
 
-        tx_data = await self.get_tx_data()
-        tx_data.update({"value": amount_wei, "gasPrice": await self.w3.eth.gas_price})
+        tx_data = await self.get_tx_data(amount_wei)
 
         transaction = await contract.functions.withdrawETH(
             amount_wei,
@@ -124,8 +122,7 @@ class Scroll(Account):
 
         logger.info(f"[{self.account_id}][{self.address}] Wrap {amount} ETH")
 
-        tx_data = await self.get_tx_data()
-        tx_data.update({"value": amount_wei, "gasPrice": await self.w3.eth.gas_price})
+        tx_data = await self.get_tx_data(amount_wei)
 
         transaction = await weth_contract.functions.deposit().build_transaction(tx_data)
 
@@ -161,7 +158,6 @@ class Scroll(Account):
         logger.info(f"[{self.account_id}][{self.address}] Unwrap {amount} ETH")
 
         tx_data = await self.get_tx_data()
-        tx_data.update({"gasPrice": await self.w3.eth.gas_price})
 
         transaction = await weth_contract.functions.withdraw(amount_wei).build_transaction(tx_data)
 

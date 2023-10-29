@@ -33,6 +33,9 @@ with open('data/abi/syncswap/classic_pool_data.json') as file:
 with open("data/abi/skydrome/abi.json", "r") as file:
     SKYDROME_ROUTER_ABI = json.load(file)
 
+with open("data/abi/layerbank/abi.json", "r") as file:
+    LAYERBANK_ABI = json.load(file)
+
 with open("data/abi/zerius/abi.json", "r") as file:
     ZERIUS_ABI = json.load(file)
 
@@ -75,6 +78,10 @@ SYNCSWAP_CONTRACTS = {
 SKYDROME_CONTRACTS = {
     "router": "0xAA111C62cDEEf205f70E6722D1E22274274ec12F"
 }
+
+LAYERBANK_CONTRACT = "0xec53c830f4444a8a56455c6836b5d2aa794289aa"
+
+LAYERBANK_WETH_CONTRACT = "0x274C3795dadfEbf562932992bF241ae087e0a98C"
 
 ZERIUS_CONTRACT = "0xeb22c3e221080ead305cae5f37f0753970d973cd"
 

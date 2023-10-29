@@ -3,6 +3,7 @@ from .scroll import Scroll
 from .orbiter import Orbiter
 from .skydrome import Skydrome
 from .syncswap import SyncSwap
+from .layerbank import LayerBank
 from .zerius import Zerius
 from .dmail import Dmail
 from .omnisea import Omnisea

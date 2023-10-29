@@ -1,4 +1,3 @@
-
 from loguru import logger
 
 from utils.gas_checker import check_gas
@@ -62,8 +61,8 @@ class Orbiter(Account):
 
             amount_to_bridge = str(amount_wei).replace(str(amount_wei)[-4:], self.bridge_codes[destination_chain])
 
-            tx_data = await self.get_tx_data()
-            tx_data.update({"value": int(amount_to_bridge), "to": ORBITER_CONTRACT})
+            tx_data = await self.get_tx_data(int(amount_to_bridge))
+            tx_data.update({"to": self.w3.to_checksum_address(ORBITER_CONTRACT)})
 
             balance = await self.w3.eth.get_balance(self.address)
 

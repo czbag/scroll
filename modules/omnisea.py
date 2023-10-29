@@ -28,7 +28,6 @@ class Omnisea(Account):
         title, symbol = self.generate_collection_data()
 
         tx_data = await self.get_tx_data()
-        tx_data.update({"gasPrice": await self.w3.eth.gas_price})
 
         transaction = await self.contract.functions.create([
             title,

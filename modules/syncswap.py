@@ -82,9 +82,6 @@ class SyncSwap(Account):
                 tx_data.update({"value": amount_wei})
             else:
                 await self.approve(amount_wei, token_address, Web3.to_checksum_address(SYNCSWAP_CONTRACTS["router"]))
-                tx_data.update({"nonce": await self.w3.eth.get_transaction_count(self.address)})
-
-            tx_data.update({"gasPrice": await self.w3.eth.gas_price})
 
             min_amount_out = await self.get_min_amount_out(pool_address, token_address, amount_wei, slippage)
 

@@ -49,8 +49,7 @@ class Zerius(Account):
 
         mint_fee = await self.contract.functions.mintFee().call()
 
-        tx_data = await self.get_tx_data()
-        tx_data.update({"value": mint_fee, "gasPrice": await self.w3.eth.gas_price})
+        tx_data = await self.get_tx_data(mint_fee)
 
         transaction = await self.contract.functions.mint().build_transaction(tx_data)
 
@@ -77,8 +76,7 @@ class Zerius(Account):
 
         base_bridge_fee = await self.contract.functions.bridgeFee().call()
 
-        tx_data = await self.get_tx_data()
-        tx_data.update({"value": l0_fee + base_bridge_fee, "gasPrice": await self.w3.eth.gas_price})
+        tx_data = await self.get_tx_data(l0_fee + base_bridge_fee)
 
         transaction = await self.contract.functions.sendFrom(
             self.address,

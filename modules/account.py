@@ -32,12 +32,17 @@ class Account:
         self.account = EthereumAccount.from_key(private_key)
         self.address = self.account.address
 
-    async def get_tx_data(self):
+    async def get_tx_data(self, value: int = 0, gas_price: bool = True):
         tx = {
             "chainId": await self.w3.eth.chain_id,
             "from": self.address,
+            "value": value,
             "nonce": await self.w3.eth.get_transaction_count(self.address),
         }
+
+        if gas_price:
+            tx.update({"gasPrice": await self.w3.eth.gas_price})
+
         return tx
 
     def get_contract(self, contract_address: str, abi=None) -> Union[Type[Contract], Contract]:
@@ -112,7 +117,6 @@ class Account:
             approve_amount = 2 ** 128 if amount > allowance_amount else 0
 
             tx_data = await self.get_tx_data()
-            tx_data.update({"gasPrice": await self.w3.eth.gas_price})
 
             transaction = await contract.functions.approve(
                 contract_address,

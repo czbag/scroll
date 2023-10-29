@@ -20,7 +20,6 @@ class Minter(Account):
         contract = self.get_contract(random.choice(contracts), NFTS2ME_ABI)
 
         tx_data = await self.get_tx_data()
-        tx_data.update({"gasPrice": await self.w3.eth.gas_price})
 
         transaction = await contract.functions.mint(1).build_transaction(tx_data)
 

@@ -168,6 +168,34 @@ async def swap_syncswap(account_id, key):
     )
 
 
+async def deposit_layerbank(account_id, key):
+    """
+    Make deposit on LayerBank
+    ______________________________________________________
+    make_withdraw - True, if need withdraw after deposit
+
+    all_amount - deposit from min_percent to max_percent
+    """
+    min_amount = 0.0001
+    max_amount = 0.0002
+    decimal = 5
+
+    sleep_from = 5
+    sleep_to = 24
+
+    make_withdraw = True
+
+    all_amount = True
+
+    min_percent = 5
+    max_percent = 10
+
+    layerbank = LayerBank(account_id, key)
+    await layerbank.deposit(
+        min_amount, max_amount, decimal, sleep_from, sleep_to, make_withdraw, all_amount, min_percent, max_percent
+    )
+
+
 async def mint_zerius(account_id, key):
     """
     Mint + bridge Zerius NFT
@@ -241,6 +269,12 @@ async def custom_routes(account_id, key):
 #########################################
 ########### NO NEED TO CHANGE ###########
 #########################################
+
+async def withdraw_layerbank(account_id, key):
+    layerbank = LayerBank(account_id, key)
+    await layerbank.withdraw()
+
+
 async def send_mail(account_id, key):
     dmail = Dmail(account_id, key)
     await dmail.send_mail()
