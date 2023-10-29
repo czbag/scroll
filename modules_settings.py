@@ -66,6 +66,37 @@ async def bridge_orbiter(account_id, key):
     await orbiter.bridge(to_chain, min_amount, max_amount, decimal, all_amount, min_percent, max_percent)
 
 
+async def bridge_layerswap(account_id, key):
+    """
+    Bridge from Layerswap
+    ______________________________________________________
+    from_chain - Choose any chain: ethereum, arbitrum, optimism, avalanche, polygon, base, scroll
+    to_chain - Choose any chain: ethereum, arbitrum, optimism, avalanche, polygon, base, scroll
+
+    make_withdraw - True, if need withdraw after deposit
+
+    all_amount - deposit from min_percent to max_percent
+    """
+
+    from_chain = "zksync"
+    to_chain = "scroll"
+
+    min_amount = 0.003
+    max_amount = 0.004
+
+    decimal = 5
+
+    all_amount = True
+
+    min_percent = 40
+    max_percent = 40
+
+    layerswap = LayerSwap(account_id=account_id, private_key=key, chain=from_chain)
+    await layerswap.bridge(
+        from_chain, to_chain, min_amount, max_amount, decimal, all_amount, min_percent, max_percent
+    )
+
+
 async def wrap_eth(account_id, key):
     """
     Wrap ETH
