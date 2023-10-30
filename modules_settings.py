@@ -271,21 +271,30 @@ async def custom_routes(account_id, key):
         – swap_syncswap
     LIQUIDITY:
     LANDING:
+        – depost_layerbank
+        – withdraw_layerbank
     NFT/DOMAIN:
         – mint_zerius
         – create_omnisea
         – mint_nft
     ANOTHER:
         – send_mail (Dmail)
+        – deploy_contract
     ______________________________________________________
     Disclaimer - You can add modules to [] to select random ones,
     example [module_1, module_2, [module_3, module_4], module 5]
     The script will start with module 1, 2, 5 and select a random one from module 3 and 4
+
+    You can also specify None in [], and if None is selected by random, this module will be skipped
+
+    You can also specify () to perform the desired action a certain number of times
+    example (send_mail, 1, 10) run this module 1 to 10 times
     """
 
     use_modules = [
         create_omnisea,
-        [create_omnisea, mint_zerius],
+        [create_omnisea, mint_zerius, None],
+        (create_omnisea, 1, 3),
     ]
 
     sleep_from = 300
