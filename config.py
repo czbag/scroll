@@ -48,6 +48,9 @@ with open("data/abi/omnisea/abi.json", "r") as file:
 with open("data/abi/nft2me/abi.json", "r") as file:
     NFTS2ME_ABI = json.load(file)
 
+with open("data/abi/gnosis/abi.json", "r") as file:
+    SAFE_ABI = json.load(file)
+
 with open("data/deploy/abi.json", "r") as file:
     DEPLOYER_ABI = json.load(file)
 
@@ -88,3 +91,5 @@ ZERIUS_CONTRACT = "0xeb22c3e221080ead305cae5f37f0753970d973cd"
 DMAIL_CONTRACT = "0x47fbe95e981c0df9737b6971b451fb15fdc989d9"
 
 OMNISEA_CONTRACT = "0x46ce46951d12710d85bc4fe10bb29c6ea5012077"
+
+SAFE_CONTRACT = "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2"

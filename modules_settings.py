@@ -279,6 +279,7 @@ async def custom_routes(account_id, key):
         – mint_nft
     ANOTHER:
         – send_mail (Dmail)
+        – create_safe
         – deploy_contract
     ______________________________________________________
     Disclaimer - You can add modules to [] to select random ones,
@@ -323,6 +324,11 @@ async def send_mail(account_id, key):
 async def create_omnisea(account_id, key):
     omnisea = Omnisea(account_id, key)
     await omnisea.create()
+
+
+async def create_safe(account_id, key):
+    gnosis_safe = GnosisSafe(account_id, key)
+    await gnosis_safe.create_safe()
 
 
 async def deploy_contract(account_id, key):

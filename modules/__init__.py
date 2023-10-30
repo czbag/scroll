@@ -9,6 +9,7 @@ from .zerius import Zerius
 from .dmail import Dmail
 from .omnisea import Omnisea
 from .nfts2me import Minter
+from .safe import GnosisSafe
 from .deploy import Deployer
 from .routes import Routes
 from .tx_checker import check_tx
