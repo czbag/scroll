@@ -111,13 +111,17 @@ class LayerSwap(Account):
 
                 return False
 
-    async def get_swap_path(self, from_chain: str, to_chain: str, amount: float) -> Union[Dict, bool]:
+    async def prepare_transaction(self, from_chain: str, to_chain: str, amount: float) -> Union[Dict, bool]:
         swap_id = await self.create_swap(from_chain, to_chain, amount)
 
-        url = f"https://api.layerswap.io/api/swaps/{swap_id}"
+        url = f"https://api.layerswap.io/api/swaps/{swap_id}/prepare_src_transaction"
+
+        params = {
+            "from_address": self.address
+        }
 
         async with aiohttp.ClientSession() as session:
-            response = await session.get(url=url, headers=self.headers)
+            response = await session.get(url=url, headers=self.headers, params=params)
 
             if response.status == 200:
                 transaction_data = await response.json()
@@ -173,13 +177,15 @@ class LayerSwap(Account):
         if swap_rate is False:
             return
 
-        swap_path = await self.get_swap_path(from_chain, to_chain, amount)
+        prepare_transaction = await self.prepare_transaction(from_chain, to_chain, amount)
 
-        if swap_path is False:
+        if prepare_transaction is False:
             return
 
+        logger.info(f"[{self.account_id}][{self.address}] Bridge {from_chain} –> {to_chain} | {amount} ETH")
+
         tx_data = await self.get_tx_data(amount_wei)
-        tx_data.update({"to": self.w3.to_checksum_address(swap_path["deposit_address"])})
+        tx_data.update({"to": self.w3.to_checksum_address(prepare_transaction["to_address"])})
 
         signed_txn = await self.sign(tx_data)
 

@@ -88,8 +88,8 @@ async def bridge_layerswap(account_id, key):
 
     all_amount = True
 
-    min_percent = 40
-    max_percent = 40
+    min_percent = 5
+    max_percent = 5
 
     layerswap = LayerSwap(account_id=account_id, private_key=key, chain=from_chain)
     await layerswap.bridge(
@@ -263,6 +263,7 @@ async def custom_routes(account_id, key):
         – deposit_scroll
         – withdraw_scroll
         – bridge_orbiter
+        – bridge_layerswap
     WRAP:
         – wrap_eth
         – unwrap_eth
