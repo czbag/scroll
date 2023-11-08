@@ -25,13 +25,33 @@ python main.py
 
 2. Бридж через Orbiter
 
-3. Врап/анврап ETH
+3. Бридж через Layerswap (Для работы укажите API KEY в settings.py, взять его можно [тут](https://www.layerswap.io/dashboard))
 
-4. Минт + бридж Zerius NFT
+4. Врап/анврап ETH
 
-8. Dmail
+5. Skydrome — Свапы ETH/USDC (ликвы 1кк)
 
-13. Чекер количества транз
+6. SyncSwap — Свапы ETH/USDC (ликвы 1кк)
+
+7. LayerBank — Лендинговый протокол (депозит/вывод)
+
+8. Минт + бридж Zerius NFT
+
+9. Omnisea — Создание NFT коллекции
+
+10. NFTS2ME — Минт free NFT по указанным контрактам
+
+11. Dmail
+
+12. Gnosis Safe — Создание сейфа
+
+13. Deployer — Деплой любых контрактов (Можно вставить 0x, либо взять bytecode у Merkly [тут](https://t.me/sybilwave/279), или Owlto [тут](https://t.me/sybilwave/299), или OmniBTC [тут](https://t.me/sybilwave/306))
+
+14. Кастомные маршруты
+
+15. Чекер количества транз
+
+16. Многопоточность -  аккаунты запускаются в потоках, доступно указание слипов между аккаунтами (SLEEP_FROM/TO), а также между потоками (THREAD_SLEEP_FROM/TO), количество потоков настраиваются в QUANTITY_THREADS.
 
 ---
 <h2>⚙️ Настройка</h2>
