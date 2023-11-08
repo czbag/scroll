@@ -1,6 +1,9 @@
 # RANDOM WALLETS MODE
 RANDOM_WALLET = True  # True/False
 
+# removing a wallet from the list after the job is done
+REMOVE_WALLET = False
+
 SLEEP_FROM = 500  # Second
 SLEEP_TO = 1000  # Second
 

@@ -13,9 +13,10 @@ from settings import (
     SLEEP_FROM,
     QUANTITY_THREADS,
     THREAD_SLEEP_FROM,
-    THREAD_SLEEP_TO
+    THREAD_SLEEP_TO, REMOVE_WALLET
 )
 from modules_settings import *
+from utils.helpers import remove_wallet
 from utils.sleeping import sleep
 
 
@@ -66,6 +67,9 @@ def get_wallets():
 
 async def run_module(module, account_id, key):
     await module(account_id, key)
+
+    if REMOVE_WALLET:
+        remove_wallet(key)
 
     await sleep(SLEEP_FROM, SLEEP_TO)
 
