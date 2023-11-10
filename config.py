@@ -57,6 +57,9 @@ with open("data/deploy/abi.json", "r") as file:
 with open("data/deploy/bytecode.txt", "r") as file:
     DEPLOYER_BYTECODE = file.read()
 
+with open("data/abi/zkstars/abi.json", "r") as file:
+    ZKSTARS_ABI = json.load(file)
+
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
 BRIDGE_CONTRACTS = {

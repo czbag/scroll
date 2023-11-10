@@ -6,6 +6,7 @@ from .skydrome import Skydrome
 from .syncswap import SyncSwap
 from .layerbank import LayerBank
 from .zerius import Zerius
+from .zkstars import ZkStars
 from .dmail import Dmail
 from .omnisea import Omnisea
 from .nfts2me import Minter
