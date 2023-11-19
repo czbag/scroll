@@ -4,6 +4,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 import questionary
+from loguru import logger
 from questionary import Choice
 
 from config import ACCOUNTS
@@ -67,7 +68,10 @@ def get_wallets():
 
 
 async def run_module(module, account_id, key):
-    await module(account_id, key)
+    try:
+        await module(account_id, key)
+    except Exception as e:
+        logger.error(e)
 
     if REMOVE_WALLET:
         remove_wallet(key)
@@ -98,6 +102,8 @@ def main(module):
 
 if __name__ == '__main__':
     print("❤️ Subscribe to me – https://t.me/sybilwave\n")
+
+    logger.add("logging.log")
 
     module = get_module()
     if module == "tx_checker":
