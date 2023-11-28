@@ -33,6 +33,9 @@ with open('data/abi/syncswap/classic_pool_data.json') as file:
 with open("data/abi/skydrome/abi.json", "r") as file:
     SKYDROME_ROUTER_ABI = json.load(file)
 
+with open("data/abi/zebra/abi.json", "r") as file:
+    ZEBRA_ROUTER_ABI = json.load(file)
+
 with open("data/abi/layerbank/abi.json", "r") as file:
     LAYERBANK_ABI = json.load(file)
 
@@ -60,6 +63,9 @@ with open("data/deploy/bytecode.txt", "r") as file:
 with open("data/abi/zkstars/abi.json", "r") as file:
     ZKSTARS_ABI = json.load(file)
 
+with open("data/abi/rocketsam/abi.json", "r") as file:
+    ROCKETSAM_ABI = json.load(file)
+
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
 BRIDGE_CONTRACTS = {
@@ -83,6 +89,10 @@ SYNCSWAP_CONTRACTS = {
 
 SKYDROME_CONTRACTS = {
     "router": "0xAA111C62cDEEf205f70E6722D1E22274274ec12F"
+}
+
+ZEBRA_CONTRACTS = {
+    "router": "0x0122960d6e391478bfe8fb2408ba412d5600f621"
 }
 
 LAYERBANK_CONTRACT = "0xec53c830f4444a8a56455c6836b5d2aa794289aa"
