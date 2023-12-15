@@ -12,6 +12,7 @@ from .zkstars import ZkStars
 from .dmail import Dmail
 from .omnisea import Omnisea
 from .nfts2me import Minter
+from .nftorigins import NftOrigins
 from .safe import GnosisSafe
 from .deploy import Deployer
 from .swap_tokens import SwapTokens
