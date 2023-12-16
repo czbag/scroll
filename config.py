@@ -66,6 +66,9 @@ with open("data/abi/zkstars/abi.json", "r") as file:
 with open("data/abi/rocketsam/abi.json", "r") as file:
     ROCKETSAM_ABI = json.load(file)
 
+with open("data/abi/nft-origins/abi.json", "r") as file:
+    NFT_ORIGINS_ABI = json.load(file)
+
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
 BRIDGE_CONTRACTS = {
@@ -106,3 +109,5 @@ DMAIL_CONTRACT = "0x47fbe95e981c0df9737b6971b451fb15fdc989d9"
 OMNISEA_CONTRACT = "0x46ce46951d12710d85bc4fe10bb29c6ea5012077"
 
 SAFE_CONTRACT = "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2"
+
+NFT_ORIGINS_CONTRACT = "0x74670A3998d9d6622E32D0847fF5977c37E0eC91"

@@ -536,6 +536,10 @@ async def deploy_contract(account_id, key):
     deployer = Deployer(account_id, key)
     await deployer.deploy_token()
 
+async def nft_origins(account_id, key):
+    nft = NftOrigins(account_id, key)
+    await nft.mint()
+
 
 def get_tx_count():
     asyncio.run(check_tx())
