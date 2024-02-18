@@ -536,9 +536,15 @@ async def deploy_contract(account_id, key):
     deployer = Deployer(account_id, key)
     await deployer.deploy_token()
 
+
 async def nft_origins(account_id, key):
     nft = NftOrigins(account_id, key)
     await nft.mint()
+
+
+async def rubyscore_vote(account_id, key):
+    rubyscore = RubyScore(account_id, key)
+    await rubyscore.vote()
 
 
 def get_tx_count():
