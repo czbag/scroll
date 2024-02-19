@@ -168,3 +168,4 @@ __pycache__/
 */__pycache__/
 .idea/
 accounts.txt
+logging.log

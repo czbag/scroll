@@ -18,4 +18,5 @@ from .deploy import Deployer
 from .swap_tokens import SwapTokens
 from .multiswap import Multiswap
 from .routes import Routes
+from .rubyscore import RubyScore
 from .tx_checker import check_tx

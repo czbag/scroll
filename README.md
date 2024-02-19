@@ -47,17 +47,21 @@ python main.py
 
 10. Mint NFT on NFTS2ME
 
-11. Dmail
+11. Mint Scroll Origins NFT
 
-12. Create Gnosis Safe
+12. Dmail
 
-13. Deploy any contract
+13. RubyScore Vote
 
-14. Custom routes - actions to be performed sequentially or randomly
+14. Create Gnosis Safe
 
-15. Check gas before starting the module, if gas > specified, the software will wait for
+15. Deploy any contract
 
-16. Logging via logger module
+16. Custom routes - actions to be performed sequentially or randomly
+
+17. Check gas before starting the module, if gas > specified, the software will wait for
+
+18. Logging via logger module
 
 ---
 <h2>⚙️ Settings</h2>
