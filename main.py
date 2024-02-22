@@ -2,12 +2,13 @@ import random
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
+from typing import Union
 
 import questionary
 from loguru import logger
 from questionary import Choice
 
-from config import ACCOUNTS
+from config import ACCOUNTS, RECIPIENTS
 from settings import (
     RANDOM_WALLET,
     SLEEP_TO,
@@ -29,6 +30,34 @@ def get_module():
             Choice("2) Withdraw from Scroll", withdraw_scroll),
             Choice("3) Bridge Orbiter", bridge_orbiter),
             Choice("4) Bridge Layerswap", bridge_layerswap),
+<<<<<<< HEAD
+            Choice("5) Bridge Nitro", bridge_nitro),
+            Choice("6) Wrap ETH", wrap_eth),
+            Choice("7) Unwrap ETH", unwrap_eth),
+            Choice("8) Swap on Skydrome", swap_skydrome),
+            Choice("9) Swap on Zebra", swap_zebra),
+            Choice("10) Swap on SyncSwap", swap_syncswap),
+            Choice("11) Swap on XYSwap", swap_xyswap),
+            Choice("12) Deposit LayerBank", deposit_layerbank),
+            Choice("13) Deposit Aave", deposit_aave),
+            Choice("14) Withdraw LayerBank", withdraw_layerbank),
+            Choice("15) Withdraw Aave", withdraw_aave),
+            Choice("16) Mint and Bridge Zerius NFT", mint_zerius),
+            Choice("17) Mint L2Pass NFT", mint_l2pass),
+            Choice("18) Mint ZkStars NFT", mint_zkstars),
+            Choice("19) Create NFT collection on Omnisea", create_omnisea),
+            Choice("20) RubyScore Vote", rubyscore_vote),
+            Choice("21) Mint NFT on NFTS2ME", mint_nft),
+            Choice("22) Dmail send email", send_mail),
+            Choice("23) Create gnosis safe", create_safe),
+            Choice("24) Deploy contract", deploy_contract),
+            Choice("25) Swap tokens to ETH", swap_tokens),
+            Choice("26) Use Multiswap", swap_multiswap),
+            Choice("27) Use custom routes", custom_routes),
+            Choice("28) Make transfer", make_transfer),
+            Choice("29) Check transaction count", "tx_checker"),
+            Choice("30) Exit", "exit"),
+=======
             Choice("5) Wrap ETH", wrap_eth),
             Choice("6) Unwrap ETH", unwrap_eth),
             Choice("7) Swap on Skydrome", swap_skydrome),
@@ -52,6 +81,10 @@ def get_module():
             Choice("25) Use custom routes", custom_routes),
             Choice("26) Check transaction count", "tx_checker"),
             Choice("27) Exit", "exit"),
+<<<<<<< Updated upstream
+=======
+>>>>>>> 437a2f967d024449df4452cee43b3f320ca00f1e
+>>>>>>> Stashed changes
         ],
         qmark="⚙️ ",
         pointer="✅ "
@@ -63,20 +96,31 @@ def get_module():
     return result
 
 
-def get_wallets():
-    wallets = [
-        {
-            "id": _id,
-            "key": key,
-        } for _id, key in enumerate(ACCOUNTS, start=1)
-    ]
+def get_wallets(use_recipients: bool = False):
+    if use_recipients:
+        account_with_recipients = dict(zip(ACCOUNTS, RECIPIENTS))
+
+        wallets = [
+            {
+                "id": _id,
+                "key": key,
+                "recipient": account_with_recipients[key],
+            } for _id, key in enumerate(account_with_recipients, start=1)
+        ]
+    else:
+        wallets = [
+            {
+                "id": _id,
+                "key": key,
+            } for _id, key in enumerate(ACCOUNTS, start=1)
+        ]
 
     return wallets
 
 
-async def run_module(module, account_id, key):
+async def run_module(module, account_id, key, recipient: Union[str, None] = None):
     try:
-        await module(account_id, key)
+        await module(account_id, key, recipient)
     except Exception as e:
         logger.error(e)
 
@@ -86,12 +130,15 @@ async def run_module(module, account_id, key):
     await sleep(SLEEP_FROM, SLEEP_TO)
 
 
-def _async_run_module(module, account_id, key):
-    asyncio.run(run_module(module, account_id, key))
+def _async_run_module(module, account_id, key, recipient):
+    asyncio.run(run_module(module, account_id, key, recipient))
 
 
 def main(module):
-    wallets = get_wallets()
+    if module in [make_transfer]:
+        wallets = get_wallets(True)
+    else:
+        wallets = get_wallets()
 
     if RANDOM_WALLET:
         random.shuffle(wallets)
@@ -103,6 +150,7 @@ def main(module):
                 module,
                 account.get("id"),
                 account.get("key"),
+                account.get("recipient", None)
             )
             time.sleep(random.randint(THREAD_SLEEP_FROM, THREAD_SLEEP_TO))
 

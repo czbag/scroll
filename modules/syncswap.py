@@ -17,8 +17,8 @@ from eth_abi import abi
 
 
 class SyncSwap(Account):
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="scroll")
+    def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
         self.swap_contract = self.get_contract(SYNCSWAP_CONTRACTS["router"], SYNCSWAP_ROUTER_ABI)
 

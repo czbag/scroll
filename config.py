@@ -9,6 +9,9 @@ with open('data/abi/erc20_abi.json') as file:
 with open("accounts.txt", "r") as file:
     ACCOUNTS = [row.strip() for row in file]
 
+with open("recipients.txt", "r") as file:
+    RECIPIENTS = [row.strip() for row in file]
+
 with open('data/abi/bridge/deposit.json') as file:
     DEPOSIT_ABI = json.load(file)
 
@@ -36,11 +39,23 @@ with open("data/abi/skydrome/abi.json", "r") as file:
 with open("data/abi/zebra/abi.json", "r") as file:
     ZEBRA_ROUTER_ABI = json.load(file)
 
+with open("data/abi/ambient/router.json", "r") as file:
+    AMBIENT_ROUTER_ABI = json.load(file)
+
+with open("data/abi/ambient/impact.json", "r") as file:
+    AMBIENT_IMPACT_ABI = json.load(file)
+
+with open("data/abi/aave/abi.json", "r") as file:
+    AAVE_ABI = json.load(file)
+
 with open("data/abi/layerbank/abi.json", "r") as file:
     LAYERBANK_ABI = json.load(file)
 
 with open("data/abi/zerius/abi.json", "r") as file:
     ZERIUS_ABI = json.load(file)
+
+with open("data/abi/l2pass/abi.json", "r") as file:
+    L2PASS_ABI = json.load(file)
 
 with open("data/abi/dmail/abi.json", "r") as file:
     DMAIL_ABI = json.load(file)
@@ -63,8 +78,14 @@ with open("data/deploy/bytecode.txt", "r") as file:
 with open("data/abi/zkstars/abi.json", "r") as file:
     ZKSTARS_ABI = json.load(file)
 
-with open("data/abi/rocketsam/abi.json", "r") as file:
-    ROCKETSAM_ABI = json.load(file)
+with open("data/abi/rubyscore/abi.json", "r") as file:
+    RUBYSCORE_VOTE_ABI = json.load(file)
+
+with open("data/abi/nft-origins/abi.json", "r") as file:
+    NFT_ORIGINS_ABI = json.load(file)
+
+with open("data/abi/rubyscore/abi.json", "r") as file:
+    RUBYSCORE_VOTE_ABI = json.load(file)
 
 with open("data/abi/nft-origins/abi.json", "r") as file:
     NFT_ORIGINS_ABI = json.load(file)
@@ -101,6 +122,20 @@ ZEBRA_CONTRACTS = {
     "router": "0x0122960d6e391478bfe8fb2408ba412d5600f621"
 }
 
+AMBIENT_CONTRACTS = {
+    "router": "0xaaaaaaaacb71bf2c8cae522ea5fa455571a74106",
+    "impact": "0xc2c301759B5e0C385a38e678014868A33E2F3ae3"
+}
+
+XYSWAP_CONTRACT = {
+    "router": "0x22bf2a9fcaab9dc96526097318f459ef74277042",
+    "use_ref": False  # If you use True, you support me 1% of the transaction amount
+}
+
+AAVE_CONTRACT = "0xff75a4b698e3ec95e608ac0f22a03b8368e05f5d"
+
+AAVE_WETH_CONTRACT = "0xf301805be1df81102c957f6d4ce29d2b8c056b2a"
+
 LAYERBANK_CONTRACT = "0xec53c830f4444a8a56455c6836b5d2aa794289aa"
 
 LAYERBANK_WETH_CONTRACT = "0x274C3795dadfEbf562932992bF241ae087e0a98C"
@@ -113,6 +148,16 @@ OMNISEA_CONTRACT = "0x46ce46951d12710d85bc4fe10bb29c6ea5012077"
 
 SAFE_CONTRACT = "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2"
 
+<<<<<<< Updated upstream
 NFT_ORIGINS_CONTRACT = "0x74670A3998d9d6622E32D0847fF5977c37E0eC91"
 
 RUBYSCORE_VOTE_CONTRACT = "0xe10Add2ad591A7AC3CA46788a06290De017b9fB4"
+=======
+<<<<<<< HEAD
+RUBYSCORE_VOTE_CONTRACT = "0xe10Add2ad591A7AC3CA46788a06290De017b9fB4"
+=======
+NFT_ORIGINS_CONTRACT = "0x74670A3998d9d6622E32D0847fF5977c37E0eC91"
+
+RUBYSCORE_VOTE_CONTRACT = "0xe10Add2ad591A7AC3CA46788a06290De017b9fB4"
+>>>>>>> 437a2f967d024449df4452cee43b3f320ca00f1e
+>>>>>>> Stashed changes

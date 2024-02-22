@@ -11,8 +11,8 @@ from .account import Account
 
 
 class Zerius(Account):
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="scroll")
+    def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
         self.contract = self.get_contract(ZERIUS_CONTRACT, ZERIUS_ABI)
 

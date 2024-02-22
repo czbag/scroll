@@ -1,21 +1,23 @@
+from typing import Dict
+
 from loguru import logger
-from config import LAYERBANK_CONTRACT, LAYERBANK_WETH_CONTRACT, LAYERBANK_ABI
+from config import AAVE_CONTRACT, AAVE_WETH_CONTRACT, AAVE_ABI
 from utils.gas_checker import check_gas
 from utils.helpers import retry
 from utils.sleeping import sleep
 from .account import Account
 
 
-class LayerBank(Account):
+class Aave(Account):
     def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
         super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
-        self.contract = self.get_contract(LAYERBANK_CONTRACT, LAYERBANK_ABI)
+        self.contract = self.get_contract(AAVE_CONTRACT, AAVE_ABI)
 
     async def get_deposit_amount(self):
-        weth_contract = self.get_contract(LAYERBANK_WETH_CONTRACT)
+        aave_weth_contract = self.get_contract(AAVE_WETH_CONTRACT)
 
-        amount = await weth_contract.functions.balanceOf(self.address).call()
+        amount = await aave_weth_contract.functions.balanceOf(self.address).call()
 
         return amount
 
@@ -43,13 +45,14 @@ class LayerBank(Account):
             max_percent
         )
 
-        logger.info(f"[{self.account_id}][{self.address}] Make deposit on LayerBank | {amount} ETH")
+        logger.info(f"[{self.account_id}][{self.address}] Make deposit on Aave | {amount} ETH")
 
         tx_data = await self.get_tx_data(amount_wei)
 
-        transaction = await self.contract.functions.supply(
-            self.w3.to_checksum_address(LAYERBANK_WETH_CONTRACT),
-            amount_wei,
+        transaction = await self.contract.functions.depositETH(
+            self.w3.to_checksum_address("0x11fCfe756c05AD438e312a7fd934381537D3cFfe"),
+            self.address,
+            0
         ).build_transaction(tx_data)
 
         signed_txn = await self.sign(transaction)
@@ -70,17 +73,18 @@ class LayerBank(Account):
 
         if amount > 0:
             logger.info(
-                f"[{self.account_id}][{self.address}] Make withdraw from LayerBank | " +
+                f"[{self.account_id}][{self.address}] Make withdraw from Aave | " +
                 f"{self.w3.from_wei(amount, 'ether')} ETH"
             )
 
-            await self.approve(amount, LAYERBANK_WETH_CONTRACT, LAYERBANK_CONTRACT)
+            await self.approve(amount, "0xf301805be1df81102c957f6d4ce29d2b8c056b2a", AAVE_CONTRACT)
 
             tx_data = await self.get_tx_data()
 
-            transaction = await self.contract.functions.redeemUnderlying(
-                self.w3.to_checksum_address(LAYERBANK_WETH_CONTRACT),
+            transaction = await self.contract.functions.withdrawETH(
+                self.w3.to_checksum_address("0x11fCfe756c05AD438e312a7fd934381537D3cFfe"),
                 amount,
+                self.address
             ).build_transaction(tx_data)
 
             signed_txn = await self.sign(transaction)

@@ -8,13 +8,14 @@ from utils.sleeping import sleep
 
 
 class SwapTokens(Account):
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="scroll")
+    def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
         self.swap_modules = {
             "syncswap": SyncSwap,
             "skydrome": Skydrome,
             "zebra": Zebra,
+            "xyswap": XYSwap,
         }
 
     def get_swap_module(self, use_dex: list):

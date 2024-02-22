@@ -17,12 +17,14 @@ from utils.sleeping import sleep
 
 
 class Account:
-    def __init__(self, account_id: int, private_key: str, chain: str) -> None:
+    def __init__(self, account_id: int, private_key: str, chain: str, recipient: str) -> None:
         self.account_id = account_id
         self.private_key = private_key
         self.chain = chain
         self.explorer = RPC[chain]["explorer"]
         self.token = RPC[chain]["token"]
+
+        self.recipient = recipient
 
         self.w3 = AsyncWeb3(
             AsyncWeb3.AsyncHTTPProvider(random.choice(RPC[chain]["rpc"])),
@@ -44,6 +46,12 @@ class Account:
             tx.update({"gasPrice": await self.w3.eth.gas_price})
 
         return tx
+
+    async def transaction_fee(self, tx_data: dict):
+        gas_price = await self.w3.eth.gas_price
+        gas = await self.w3.eth.estimate_gas(tx_data)
+
+        return int(gas * gas_price)
 
     def get_contract(self, contract_address: str, abi=None) -> Union[Type[Contract], Contract]:
         contract_address = self.w3.to_checksum_address(contract_address)
