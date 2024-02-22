@@ -591,24 +591,8 @@ async def deploy_contract(account_id, key, recipient):
     await deployer.deploy_token()
 
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 async def rubyscore_vote(account_id, key, recipient):
     rubyscore = RubyScore(account_id, key, recipient)
-=======
->>>>>>> Stashed changes
-async def nft_origins(account_id, key):
-    nft = NftOrigins(account_id, key)
-    await nft.mint()
-
-
-async def rubyscore_vote(account_id, key):
-    rubyscore = RubyScore(account_id, key)
-<<<<<<< Updated upstream
-=======
->>>>>>> 437a2f967d024449df4452cee43b3f320ca00f1e
->>>>>>> Stashed changes
     await rubyscore.vote()
 
 

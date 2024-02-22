@@ -7,18 +7,8 @@ from .account import Account
 
 
 class RubyScore(Account):
-<<<<<<< Updated upstream
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="scroll")
-=======
-<<<<<<< HEAD
     def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
         super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
-=======
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="scroll")
->>>>>>> 437a2f967d024449df4452cee43b3f320ca00f1e
->>>>>>> Stashed changes
 
         self.contract = self.get_contract(RUBYSCORE_VOTE_CONTRACT, RUBYSCORE_VOTE_ABI)
 
@@ -35,12 +25,4 @@ class RubyScore(Account):
 
         txn_hash = await self.send_raw_transaction(signed_txn)
 
-<<<<<<< Updated upstream
         await self.wait_until_tx_finished(txn_hash.hex())
-=======
-<<<<<<< HEAD
-        await self.wait_until_tx_finished(txn_hash.hex())
-=======
-        await self.wait_until_tx_finished(txn_hash.hex())
->>>>>>> 437a2f967d024449df4452cee43b3f320ca00f1e
->>>>>>> Stashed changes

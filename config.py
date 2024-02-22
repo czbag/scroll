@@ -81,18 +81,6 @@ with open("data/abi/zkstars/abi.json", "r") as file:
 with open("data/abi/rubyscore/abi.json", "r") as file:
     RUBYSCORE_VOTE_ABI = json.load(file)
 
-with open("data/abi/nft-origins/abi.json", "r") as file:
-    NFT_ORIGINS_ABI = json.load(file)
-
-with open("data/abi/rubyscore/abi.json", "r") as file:
-    RUBYSCORE_VOTE_ABI = json.load(file)
-
-with open("data/abi/nft-origins/abi.json", "r") as file:
-    NFT_ORIGINS_ABI = json.load(file)
-
-with open("data/abi/rubyscore/abi.json", "r") as file:
-    RUBYSCORE_VOTE_ABI = json.load(file)
-
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
 BRIDGE_CONTRACTS = {
@@ -148,16 +136,4 @@ OMNISEA_CONTRACT = "0x46ce46951d12710d85bc4fe10bb29c6ea5012077"
 
 SAFE_CONTRACT = "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2"
 
-<<<<<<< Updated upstream
-NFT_ORIGINS_CONTRACT = "0x74670A3998d9d6622E32D0847fF5977c37E0eC91"
-
 RUBYSCORE_VOTE_CONTRACT = "0xe10Add2ad591A7AC3CA46788a06290De017b9fB4"
-=======
-<<<<<<< HEAD
-RUBYSCORE_VOTE_CONTRACT = "0xe10Add2ad591A7AC3CA46788a06290De017b9fB4"
-=======
-NFT_ORIGINS_CONTRACT = "0x74670A3998d9d6622E32D0847fF5977c37E0eC91"
-
-RUBYSCORE_VOTE_CONTRACT = "0xe10Add2ad591A7AC3CA46788a06290De017b9fB4"
->>>>>>> 437a2f967d024449df4452cee43b3f320ca00f1e
->>>>>>> Stashed changes

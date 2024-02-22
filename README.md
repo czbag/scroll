@@ -47,19 +47,6 @@ python main.py
 
 10. LayerBank lending protocol (deposit/withdraw)
 
-<<<<<<< Updated upstream
-11. Mint Scroll Origins NFT
-
-12. Dmail
-
-13. RubyScore Vote
-
-14. Create Gnosis Safe
-
-15. Deploy any contract
-
-=======
-<<<<<<< HEAD
 11. Aave lending protocol (deposit/withdraw)
 
 12. Mint Zerius NFT and bridge this NFT to any chain (layerzero protocol)
@@ -87,27 +74,6 @@ python main.py
 23. Check gas before starting the module, if gas > specified, the software will wait for
 
 24. Logging via logger module
-=======
-11. Mint Scroll Origins NFT
-
-12. Dmail
-
-13. RubyScore Vote
-
-14. Create Gnosis Safe
-
-15. Deploy any contract
-
->>>>>>> Stashed changes
-16. Custom routes - actions to be performed sequentially or randomly
-
-17. Check gas before starting the module, if gas > specified, the software will wait for
-
-18. Logging via logger module
-<<<<<<< Updated upstream
-=======
->>>>>>> 437a2f967d024449df4452cee43b3f320ca00f1e
->>>>>>> Stashed changes
 
 ---
 <h2>⚙️ Settings</h2>

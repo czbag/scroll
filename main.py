@@ -30,7 +30,6 @@ def get_module():
             Choice("2) Withdraw from Scroll", withdraw_scroll),
             Choice("3) Bridge Orbiter", bridge_orbiter),
             Choice("4) Bridge Layerswap", bridge_layerswap),
-<<<<<<< HEAD
             Choice("5) Bridge Nitro", bridge_nitro),
             Choice("6) Wrap ETH", wrap_eth),
             Choice("7) Unwrap ETH", unwrap_eth),
@@ -57,34 +56,6 @@ def get_module():
             Choice("28) Make transfer", make_transfer),
             Choice("29) Check transaction count", "tx_checker"),
             Choice("30) Exit", "exit"),
-=======
-            Choice("5) Wrap ETH", wrap_eth),
-            Choice("6) Unwrap ETH", unwrap_eth),
-            Choice("7) Swap on Skydrome", swap_skydrome),
-            Choice("8) Swap on Zebra", swap_zebra),
-            Choice("9) Swap on SyncSwap", swap_syncswap),
-            Choice("10) Deposit LayerBank", deposit_layerbank),
-            Choice("11) Withdraw LayerBank", withdraw_layerbank),
-            Choice("12) Deposit RocketSam", deposit_rocketsam),
-            Choice("13) Withdraw RocketSam", withdraw_rocketsam),
-            Choice("14) Mint and Bridge Zerius NFT", mint_zerius),
-            Choice("15) Mint ZkStars NFT", mint_zkstars),
-            Choice("16) Create NFT collection on Omnisea", create_omnisea),
-            Choice("17) Mint NFT on NFTS2ME", mint_nft),
-            Choice("18) Mint Scroll Origins NFT", nft_origins),
-            Choice("19) Dmail send email", send_mail),
-            Choice("20) RubyScore Vote", rubyscore_vote),
-            Choice("21) Create gnosis safe", create_safe),
-            Choice("22) Deploy contract", deploy_contract),
-            Choice("23) Swap tokens to ETH", swap_tokens),
-            Choice("24) Use Multiswap", swap_multiswap),
-            Choice("25) Use custom routes", custom_routes),
-            Choice("26) Check transaction count", "tx_checker"),
-            Choice("27) Exit", "exit"),
-<<<<<<< Updated upstream
-=======
->>>>>>> 437a2f967d024449df4452cee43b3f320ca00f1e
->>>>>>> Stashed changes
         ],
         qmark="⚙️ ",
         pointer="✅ "
