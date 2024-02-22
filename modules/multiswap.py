@@ -65,7 +65,7 @@ class Multiswap(Account):
                 min_amount = balance["balance"] if balance["balance"] <= 1 else balance["balance"] / 100 * min_percent
                 max_amount = balance["balance"] if balance["balance"] <= 1 else balance["balance"] / 100 * max_percent
 
-            swap_module = self.get_swap_module(use_dex)(self.account_id, self.private_key)
+            swap_module = self.get_swap_module(use_dex)(self.account_id, self.private_key, self.recipient)
             await swap_module.swap(
                 token,
                 to_token,

@@ -43,7 +43,7 @@ class SwapTokens(Account):
             balance = await self.get_balance(SCROLL_TOKENS[token])
 
             if balance["balance_wei"] > 0:
-                swap_module = self.get_swap_module(use_dex)(self.account_id, self.private_key)
+                swap_module = self.get_swap_module(use_dex)(self.account_id, self.private_key, self.recipient)
                 await swap_module.swap(
                     token,
                     "ETH",
