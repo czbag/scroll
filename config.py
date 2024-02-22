@@ -39,12 +39,6 @@ with open("data/abi/skydrome/abi.json", "r") as file:
 with open("data/abi/zebra/abi.json", "r") as file:
     ZEBRA_ROUTER_ABI = json.load(file)
 
-with open("data/abi/ambient/router.json", "r") as file:
-    AMBIENT_ROUTER_ABI = json.load(file)
-
-with open("data/abi/ambient/impact.json", "r") as file:
-    AMBIENT_IMPACT_ABI = json.load(file)
-
 with open("data/abi/aave/abi.json", "r") as file:
     AAVE_ABI = json.load(file)
 
