@@ -20,13 +20,15 @@ class L2Pass(Account):
     async def mint(self, contract: str):
         logger.info(f"[{self.account_id}][{self.address}] Mint L2Pass NFT")
 
-        contract = self.get_contract(contract, L2PASS_ABI)
+        contract = self.get_contract(self.w3.to_checksum_address(contract), L2PASS_ABI)
 
         mint_price = await self.get_mint_price(contract)
 
         tx_data = await self.get_tx_data(mint_price)
 
-        signed_txn = await self.sign(tx_data)
+        transaction = await contract.functions.mint(1).build_transaction(tx_data)
+
+        signed_txn = await self.sign(transaction)
 
         txn_hash = await self.send_raw_transaction(signed_txn)
 
