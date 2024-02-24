@@ -12,7 +12,7 @@ from web3.exceptions import TransactionNotFound
 from web3.middleware import async_geth_poa_middleware
 
 from config import RPC, ERC20_ABI, SCROLL_TOKENS
-from settings import GAS_MULTIPLIER, MAX_PRIORITY_FEE
+from settings import GAS_MULTIPLIER, MAX_PRIORITY_FEE, GAS_LIMIT_MULTIPLIER
 from utils.sleeping import sleep
 
 
@@ -170,6 +170,8 @@ class Account:
                     "maxFeePerGas": max_fee_per_gas,
                 }
             )
+        else:
+            transaction.update({"gasPrice": int(transaction['gasPrice'] * GAS_LIMIT_MULTIPLIER)})
 
         gas = await self.w3.eth.estimate_gas(transaction)
         gas = int(gas * GAS_MULTIPLIER)
