@@ -75,6 +75,12 @@ with open("data/abi/zkstars/abi.json", "r") as file:
 with open("data/abi/rubyscore/abi.json", "r") as file:
     RUBYSCORE_VOTE_ABI = json.load(file)
 
+with open("data/abi/l2telegraph/send_message.json", "r") as file:
+    L2TELEGRAPH_MESSAGE_ABI = json.load(file)
+
+with open("data/abi/l2telegraph/bridge_nft.json", "r") as file:
+    L2TELEGRAPH_NFT_ABI = json.load(file)
+
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
 BRIDGE_CONTRACTS = {
@@ -131,3 +137,7 @@ OMNISEA_CONTRACT = "0x46ce46951d12710d85bc4fe10bb29c6ea5012077"
 SAFE_CONTRACT = "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2"
 
 RUBYSCORE_VOTE_CONTRACT = "0xe10Add2ad591A7AC3CA46788a06290De017b9fB4"
+
+L2TELEGRAPH_MESSAGE_CONTRACT = "0x9f63dbdf90837384872828d1ed6eb424a7f7f939"
+
+L2TELEGRAPH_NFT_CONTRACT = "0xdc60fd9d2a4ccf97f292969580874de69e6c326e"

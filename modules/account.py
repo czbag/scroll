@@ -119,7 +119,7 @@ class Account:
 
         allowance_amount = await self.check_allowance(token_address, contract_address)
 
-        if amount > allowance_amount or amount == 0:
+        if amount > allowance_amount:
             logger.success(f"[{self.account_id}][{self.address}] Make approve")
 
             approve_amount = 2 ** 128 if amount > allowance_amount else 0

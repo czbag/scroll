@@ -31,19 +31,16 @@ class Multiswap(Account):
             min_swap: int,
             max_swap: int,
             slippage: Union[int, float],
-            random_swap_token: bool,
+            back_swap: bool,
             min_percent: int,
             max_percent: int
     ):
         quantity_swap = random.randint(min_swap, max_swap)
 
-        if random_swap_token:
-            path = [random.choice(["ETH", "USDC"]) for _ in range(0, quantity_swap)]
-            usdc_balance = await self.get_balance(SCROLL_TOKENS["USDC"])
-            if path[0] == "USDC" and usdc_balance["balance"] <= 1:
-                path[0] = "ETH"
-        else:
-            path = ["ETH" if _ % 2 == 0 else "USDC" for _ in range(0, quantity_swap)]
+        path = ["ETH" if _ % 2 == 0 else "USDC" for _ in range(quantity_swap)]
+
+        if back_swap and path[-1] == "ETH":
+            path.append("USDC")
 
         logger.info(f"[{self.account_id}][{self.address}] Start MultiSwap | quantity swaps: {quantity_swap}")
 

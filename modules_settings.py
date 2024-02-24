@@ -422,6 +422,37 @@ async def mint_zkstars(account_id, key, recipient):
     await zkkstars.mint(contracts, mint_min, mint_max, mint_all, sleep_from, sleep_to)
 
 
+async def send_message(account_id, key, recipient):
+    """
+    Send message with L2Telegraph
+    ______________________________________________________
+    chain - select need chain to send message, you can specify several, one will be selected randomly
+
+    availiable chaines: bsc, optimism, avalanche, arbitrum, polygon, linea, moonbeam, kava, telos, klaytn, gnosis, moonriver
+    """
+    use_chain = ["gnosis", "moonriver"]
+
+    l2telegraph = L2Telegraph(account_id, key, recipient)
+    await l2telegraph.send_message(use_chain)
+
+
+async def bridge_nft(account_id, key, recipient):
+    """
+    Make mint NFT and bridge NFT on L2Telegraph
+    ______________________________________________________
+    chain - select need chain to send message, you can specify several, one will be selected randomly
+
+    availiable chaines: bsc, optimism, avalanche, arbitrum, polygon, linea, moonbeam, kava, telos, klaytn, gnosis, moonriver
+    """
+    use_chain = ["gnosis", "moonriver"]
+
+    sleep_from = 5
+    sleep_to = 20
+
+    l2telegraph = L2Telegraph(account_id, key, recipient)
+    await l2telegraph.bridge(use_chain, sleep_from, sleep_to)
+
+
 async def make_transfer(_id, key, recipient):
     """
     Transfer ETH
@@ -472,8 +503,7 @@ async def swap_multiswap(account_id, key, recipient):
     use_dex - Choose any dex: syncswap, skydrome, zebra, xyswap
     quantity_swap - Quantity swaps
     ______________________________________________________
-    random_swap_token - If True the swap path will be [ETH -> USDC -> USDC -> ETH] (random!)
-    If False the swap path will be [ETH -> USDC -> ETH -> USDC]
+    If back_swap is True, then, if USDC remains, it will be swapped into ETH.
     """
 
     use_dex = ["syncswap", "skydrome", "zebra"]
@@ -486,14 +516,14 @@ async def swap_multiswap(account_id, key, recipient):
 
     slippage = 0.1
 
-    random_swap_token = True
+    back_swap = True
 
     min_percent = 5
     max_percent = 10
 
     multi = Multiswap(account_id, key, recipient)
     await multi.swap(
-        use_dex, sleep_from, sleep_to, min_swap, max_swap, slippage, random_swap_token, min_percent, max_percent
+        use_dex, sleep_from, sleep_to, min_swap, max_swap, slippage, back_swap, min_percent, max_percent
     )
 
 

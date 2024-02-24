@@ -17,6 +17,7 @@ from .omnisea import Omnisea
 from .nfts2me import Minter
 from .rubyscore import RubyScore
 from .safe import GnosisSafe
+from .l2telegraph import L2Telegraph
 from .deploy import Deployer
 from .swap_tokens import SwapTokens
 from .multiswap import Multiswap
