@@ -627,8 +627,8 @@ async def rubyscore_vote(account_id, key, recipient):
     await rubyscore.vote()
 
 
-async def nft_origins(account_id, key):
-    nft = NftOrigins(account_id, key)
+async def nft_origins(account_id, key, recipient):
+    nft = NftOrigins(account_id, key, recipient)
     await nft.mint()
 
 
