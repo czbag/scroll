@@ -542,6 +542,7 @@ async def custom_routes(account_id, key, recipient):
         – swap_skydrome
         – swap_syncswap
         – swap_zebra
+        – swap_xyswap
     LIQUIDITY:
     LANDING:
         – depost_layerbank
@@ -624,6 +625,11 @@ async def deploy_contract(account_id, key, recipient):
 async def rubyscore_vote(account_id, key, recipient):
     rubyscore = RubyScore(account_id, key, recipient)
     await rubyscore.vote()
+
+
+async def nft_origins(account_id, key):
+    nft = NftOrigins(account_id, key)
+    await nft.mint()
 
 
 def get_tx_count():
