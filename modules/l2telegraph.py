@@ -20,18 +20,18 @@ class L2Telegraph(Account):
         super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
         self.chains_id = {
-            "bsc": 102,
-            "optimism": 111,
-            "avalanche": 106,
-            "arbitrum": 110,
-            "polygon": 109,
-            "linea": 183,
-            "moonbeam": 126,
-            "kava": 177,
-            "telos": 199,
-            "klaytn": 150,
-            "gnosis": 145,
-            "moonriver": 167,
+            "bsc": {"id": 102, "msg": "0x2f4572C09D6bE78F9adc18FE26fB298546eEf58e", "nft":"0xc162cf8c4c6697ab8e613ce0cd37c0ab97ba5a60"},
+            "optimism": {"id": 111, "msg": "0xa5B72e35E35d219c3274Cee227FbE4D317915E0C", "nft":"0x64e0f6164ac110b67df9a4848707ffbcb86c87a9"},
+            "avalanche": {"id": 106, "msg": "0x811bcF49225ffE8039989a30cf5C03f60660753d", "nft":"0x9539c9f145d2bf0eb7ed0824fe8583cd62410d3e"},
+            "arbitrum": {"id": 110, "msg": "0x479e97FdE57A70bcC85e861EDB71bB613600d55a", "nft":"0x80be0f5b780e093b3f53bd5df8d1cf09aabf690f"},
+            "polygon": {"id": 109, "msg": "0x523d5581A0bb8BB2Bc9f23B5202894E31124eA3e", "nft":"0xf9e15dd2a618bf1c0cf60f544a80f8ec774c6813"},
+            "linea": {"id": 183, "msg": "0x7599d1275831c9fc63f9a27a3c67fe0c8fc19a47", "nft":"0xdc60fd9d2a4ccf97f292969580874de69e6c326e"},
+            "moonbeam": {"id": 126, "msg": "0x36a358b3Ba1FB368E35b71ea40c7f4Ab89bFd8e1"},
+            "kava": {"id": 177, "msg": "0x3Aef52924De5638652c525569373A3D94E0b202f"},
+            "telos": {"id": 199, "msg": "0xDC60fd9d2A4ccF97f292969580874De69E6c326E"},
+            "klaytn": {"id": 150, "msg": "0xDC60fd9d2A4ccF97f292969580874De69E6c326E"},
+            "gnosis": {"id": 145, "msg": "0xE266EedB13A69AF15c1756a241021905B1827F6A"},
+            "moonriver": {"id": 167, "msg": "0x5b10ae182c297ec76fe6fe0e3da7c4797cede02d"},
         }
 
     async def get_estimate_fee(self, contract_address: str, abi: dict, chain_id: int):
@@ -64,17 +64,17 @@ class L2Telegraph(Account):
         l0_fee = await self.get_estimate_fee(
             L2TELEGRAPH_MESSAGE_CONTRACT,
             L2TELEGRAPH_MESSAGE_ABI,
-            self.chains_id[random_chain]
+            self.chains_id[random_chain]["id"]
         )
 
-        tx_data = await self.get_tx_data(self.w3.to_wei(0.00025, "ether") + l0_fee)
+        tx_data = await self.get_tx_data(self.w3.to_wei(0.0001, "ether") + l0_fee)
 
         contract = self.get_contract(L2TELEGRAPH_MESSAGE_CONTRACT, L2TELEGRAPH_MESSAGE_ABI)
 
         transaction = await contract.functions.sendMessage(
             ' ',
-            self.chains_id[random_chain],
-            "0xdc60fd9d2a4ccf97f292969580874de69e6c326e9f63dbdf90837384872828d1ed6eb424a7f7f939"
+            self.chains_id[random_chain]["id"],
+            f"{self.chains_id[random_chain]['msg']}9f63dbdf90837384872828d1ed6eb424a7f7f939"
         ).build_transaction(tx_data)
 
         signed_txn = await self.sign(transaction)
@@ -86,7 +86,7 @@ class L2Telegraph(Account):
     async def mint(self):
         logger.info(f"[{self.account_id}][{self.address}] Mint NFT")
 
-        tx_data = await self.get_tx_data(self.w3.to_wei(0.0005, "ether"))
+        tx_data = await self.get_tx_data(self.w3.to_wei(0.00015, "ether"))
 
         contract = self.get_contract(L2TELEGRAPH_NFT_CONTRACT, L2TELEGRAPH_NFT_ABI)
 
@@ -110,7 +110,7 @@ class L2Telegraph(Account):
         l0_fee = await self.get_estimate_fee(
             L2TELEGRAPH_MESSAGE_CONTRACT,
             L2TELEGRAPH_MESSAGE_ABI,
-            self.chains_id[random_chain]
+            self.chains_id[random_chain]["id"]
         )
 
         nft_id = await self.mint()
@@ -124,8 +124,8 @@ class L2Telegraph(Account):
         contract = self.get_contract(L2TELEGRAPH_NFT_CONTRACT, L2TELEGRAPH_NFT_ABI)
 
         transaction = await contract.functions.crossChain(
-            self.chains_id[random_chain],
-            "0xc162cf8c4c6697ab8e613ce0cd37c0ab97ba5a60dc60fd9d2a4ccf97f292969580874de69e6c326e",
+            self.chains_id[random_chain]["id"],
+            f"{self.chains_id[random_chain]['nft']}dc60fd9d2a4ccf97f292969580874de69e6c326e",
             nft_id
         ).build_transaction(tx_data)
 

@@ -442,9 +442,9 @@ async def bridge_nft(account_id, key, recipient):
     ______________________________________________________
     chain - select need chain to send message, you can specify several, one will be selected randomly
 
-    availiable chaines: bsc, optimism, avalanche, arbitrum, polygon, linea, moonbeam, kava, telos, klaytn, gnosis, moonriver
+    availiable chaines: bsc, optimism, avalanche, arbitrum, polygon, linea
     """
-    use_chain = ["gnosis", "moonriver"]
+    use_chain = ["polygon"]
 
     sleep_from = 5
     sleep_to = 20
