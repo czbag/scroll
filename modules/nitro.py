@@ -85,7 +85,7 @@ class Nitro(Account):
             {
                 "from": self.w3.to_checksum_address(transaction_data["txn"]["from"]),
                 "to": self.w3.to_checksum_address(transaction_data["txn"]["to"]),
-                "value": transaction_data["txn"]["value"],
+                "value": int(transaction_data["txn"]["value"], 16),
                 "data": transaction_data["txn"]["data"],
             }
         )
