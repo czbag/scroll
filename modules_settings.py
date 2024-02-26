@@ -527,6 +527,38 @@ async def swap_multiswap(account_id, key, recipient):
     )
 
 
+async def multibridge(account_id, key, recipient):
+    """
+    MultriBridge - Makes a bridge from a random network where there is a minimum acceptable balance
+    ______________________________________________________
+    use_bridge - right now only nitro
+
+    source_chain – ethereum, arbitrum, optimism, zksync, scroll, base, linea | Select one or more
+    destination_chain - ethereum, arbitrum, optimism, zksync, scroll, base, linea | Select one
+
+    min_chain_balance - minimum acceptable balance for bridge
+    """
+
+    use_bridge = "nitro"
+
+    source_chain = ["optimism", "zksync", "base", "linea"]
+    destination_chain = "scroll"
+
+    min_amount = 0.005
+    max_amount = 0.006
+    decimal = 4
+
+    all_amount = False
+
+    min_percent = 5
+    max_percent = 10
+
+    min_chain_balance = 0.006
+
+    multibridge = Multibridge(account_id=account_id, private_key=key, recipient=recipient)
+    await multibridge.bridge(use_bridge, source_chain, destination_chain, min_amount, max_amount, decimal, all_amount, min_percent, max_percent, min_chain_balance)
+
+
 async def custom_routes(account_id, key, recipient):
     """
     BRIDGE:
@@ -557,6 +589,7 @@ async def custom_routes(account_id, key, recipient):
         – mint_l2pass
     ANOTHER:
         – swap_multiswap
+        – multibridge
         – swap_tokens
         – send_mail (Dmail)
         – create_safe

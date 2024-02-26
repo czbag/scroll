@@ -41,6 +41,13 @@
     "explorer": "https://basescan.org/tx/",
     "token": "ETH"
   },
+  "linea": {
+    "rpc": [
+      "https://rpc.linea.build"
+    ],
+    "explorer": "https://basescan.org/tx/",
+    "token": "ETH"
+  },
   "scroll": {
     "rpc": [
       "https://rpc.scroll.io"
